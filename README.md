@@ -9,7 +9,7 @@ Methodology:
 1. The dataset provided contained daily readings for water consumption (in m³) and heating (in MWH) for the months of June, July, and August 2023.
 2. Missing values were imputed using the forward-fill method.
 3. (Not in use) Outliers in the dataset were detected and removed using the IQR method. 
-4. An ARIMA (AutoRegressive Integrated Moving Average) model was applied to forecast water and heating consumption for the entire year.
+4. An ARIMA (AutoRegressive Integrated Moving Average) model was applied to forecast water and heating consumption for the entire year. Arima hyper parameters (0,1,1) are https://en.wikipedia.org/wiki/Exponential_smoothing that should balance out cyclic data.
 5. Costs associated with water and heating consumption were calculated based on given monthly rates.
 6. The data was further enhanced with simulated warm water consumption and associated costs.
 7. Finally, the dataset was aggregated on a monthly level for easier interpretation and visualization.

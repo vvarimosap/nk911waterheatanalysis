@@ -19,20 +19,20 @@ df.fillna(method='ffill', inplace=True)
 df.fillna(method='ffill', inplace=True)
 
 # Remove outliers using IQR for both Water and Heat
-Q1_water = df['Water M3'].quantile(0.40)
-Q3_water = df['Water M3'].quantile(0.60)
+Q1_water = df['Water M3'].quantile(0.25)
+Q3_water = df['Water M3'].quantile(0.75)
 IQR_water = iqr(df['Water M3'])
 water_outliers = (df['Water M3'] < (Q1_water - 1.5 * IQR_water)) | (df['Water M3'] > (Q3_water + 1.5 * IQR_water))
-#df = df[~water_outliers]
+df = df[~water_outliers]
 
 Q1_heat = df['Heat MWH'].quantile(0.25)
 Q3_heat = df['Heat MWH'].quantile(0.75)
 IQR_heat = iqr(df['Heat MWH'])
 heat_outliers = (df['Heat MWH'] < (Q1_heat - 1.5 * IQR_heat)) | (df['Heat MWH'] > (Q3_heat + 1.5 * IQR_heat))
-#df = df[~heat_outliers]
+df = df[~heat_outliers]
 
-# ARIMA forecasting for water consumption
-water_model = ARIMA(df['Water M3'], order=(0,1,1))
+# ARIMA forecasting for water consumption - 1,1,1 best
+water_model = ARIMA(df['Water M3'], order=(1,1,5))
 water_model_fit = water_model.fit()
 water_forecast = water_model_fit.forecast(steps=365)
 
@@ -73,7 +73,7 @@ monthly_aggregated = forecast_df.groupby(forecast_df['Date'].dt.month).agg({
     'Total Water Cost per person': 'sum',
     'Predicted Heat MWH': 'sum',
     'Daily Heating Cost': 'sum'
-}).reset_index().rename(columns={'Date': 'Month','Daily Heating Cost':'Monthly Heating Cost'})
+}).reset_index().rename(columns={'Date': 'Month','Daily Heating Cost':'Monthly Heating Cost','Daily Water Cost':'Monthly Water Cost'})
 
 # Save the final aggregated dataset
 monthly_aggregated.to_csv('arima_aggregated_forecast.csv', index=False)
@@ -81,4 +81,5 @@ monthly_aggregated.to_csv('arima_aggregated_forecast.csv', index=False)
 print("Analysis with ARIMA complete. Results saved to 'arima_aggregated_forecast.csv'.")
 
 
-
+pd.set_option('display.max_colwidth', None)
+print(monthly_aggregated)

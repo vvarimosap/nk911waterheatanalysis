@@ -26,7 +26,7 @@ Visualizations:
 Results file:
 ---------------
 
-1. ![Calculated results from model](arima_aggregated_forecast.csv)
+1. [Calculated results from model](arima_aggregated_forecast.csv)
 
 Formulas and variables:
 ---------

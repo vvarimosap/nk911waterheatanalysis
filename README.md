@@ -21,12 +21,18 @@ Visualizations:
 1. ![Measured Water Usage (m³)](plots/water_consumption_raw.png)
 2. ![Predicted Water Usage (m³)](plots/predicted_water_use.png)
 3. ![Calculated values water cost per person](plots/total_water_cost.png)
-4. ![Aggregated results of analysis](plots/results.png)
+5. ![Aggregated results of analysis](plots/results.png)
    
 Results file:
 ---------------
 
-1. [Calculated results from model](arima_aggregated_forecast.csv)
+Following CSV contains results from model aggregated
+
+[Calculated results from model](arima_aggregated_forecast.csv)
+
+Full year for each day extrapolated:
+
+[Raw results from model](arima_forecast.csv)
 
 Formulas and variables:
 ---------

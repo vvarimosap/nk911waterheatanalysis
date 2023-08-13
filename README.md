@@ -6,7 +6,7 @@ This project provides an analysis of water and heating consumption for an townho
 
 Methodology:
 ------------
-1. The dataset provided contained daily readings for water consumption (in m³) and heating (in MWH). Heating is for the months of June, July, and August 2023. Water consumption is from February to August 2023.
+1. The dataset provided contained daily readings for water consumption (in m³) and heating (in MWH). Heating is for the months of June, July, and August 2023. Water consumption is from February to August 2023. Readings are received from cameras installed on top of water meters. Camera pictures are read  with imagine recognition. This explains very high readings and also corrective readings (negative results).
 2. Missing values were imputed using the forward-fill method.
 3. Outliers in the dataset were detected and removed using the IQR method. 
 4. An ARIMA (AutoRegressive Integrated Moving Average) model was applied to forecast water and heating consumption for the entire year. 

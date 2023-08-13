@@ -18,7 +18,7 @@ Tested Arima hyper parameters (0,1,1) are https://en.wikipedia.org/wiki/Exponent
 
 Visualizations:
 ---------------
-1. ![Measured Water Usage (m³)](plots/water_consumption_raw.png)
+1. [Measured Water Usage (m³)](plots/water_consumption_raw.png)
 2. ![Predicted Water Usage (m³)](plots/predicted_water_use.png)
 3. ![Calculated values water cost per person](plots/total_water_cost.png)
 5. ![Aggregated results of analysis](plots/results.png)
@@ -37,16 +37,16 @@ Full year for each day extrapolated:
 Formulas and variables:
 ---------
 
-Total Number of Person living in NK 9-11 = 30
-Warm water use = Total water per day used * 0.40 (Motiva 40% guidelines)
+**Total Number of Person living in NK 9-11** = 30
+**Warm water use** = Total water per day used * 0.40 (Motiva 40% guidelines)
 
-Water price per M3 = 3.7696 (Fresh water + waste water, including VAT)
+**Water price per M3 ** = 3.7696 (Fresh water + waste water, including VAT)
+**Energy needed to warm 1 MWH ** = 0.058
+**Heating cost for 1 MWH ** = Varies per MWH between different months per year. Prices include VAT {1: 80.6, 2: 80.6, 3: 71.92, 4: 57.04, 5: 42.16, 6: 33.48, 7: 33.48, 8: 33.48, 9: 40.92, 10: 59.52, 11: 69.44, 12: 78.12}
 
-Heating cost for 1 MWH = Varies per MWH between different months per year. Prices include VAT {1: 80.6, 2: 80.6, 3: 71.92, 4: 57.04, 5: 42.16, 6: 33.48, 7: 33.48, 8: 33.48, 9: 40.92, 10: 59.52, 11: 69.44, 12: 78.12}
-
-Cold water cost = Water use * Water price per M3
-Warm water heating cost = Warm water use M3 * 0.058 (0.058 MWH to heat one M3)  * Heating price for each month (calculate for each day of year separately)
-Total Water cost = Warm water heating cost + Cold water cost
+**Cold water cost** = Water use * Water price per M3
+**Warm water heating cost** = Warm water use M3 * 0.058  * Heating price for each month (calculate for each day of year separately)
+**Total Water cost** = Warm water heating cost + Cold water cost
 
                                                
 

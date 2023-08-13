@@ -22,8 +22,10 @@ Visualizations:
 2. ![Predicted Water Usage (m³)](plots/predicted_water_use.png)
 3. ![Calculated values water cost per person](plots/total_water_cost.png)
 4. ![Aggregated results of analysis](plots/results.png)
-Results:
--------
+   
+Results file:
+---------------
+
 1. ![Calculated results from model](arima_aggregated_forecast.csv)
 
 Formulas and variables:

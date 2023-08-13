@@ -19,9 +19,13 @@ Tested Arima hyper parameters (0,1,1) are https://en.wikipedia.org/wiki/Exponent
 Visualizations:
 ---------------
 1. [Measured Water Usage (m³)](plots/water_consumption_raw.png)
-2. [Predicted Water Usage (m³)](plots/predicted_water_use.png)
-3. [Calculated values water cost per person](plots/total_water_cost.png)
-4. [Aggregated results of analysis](plots/results.png)
+   ![Measured Water Usage (m³)](plots/water_consumption_raw.png)
+2. [Predicted Water Usage (m³) with ARIMA model](plots/predicted_water_use.png)
+   ![Predicted Water Usage (m³)](plots/predicted_water_use.png)
+3. [Predicted values water cost per person](plots/total_water_cost.png)
+   ![Calculated values water cost per person](plots/total_water_cost.png)
+4. [Aggregated results of analysis with water cost per person](plots/results.png)
+   ![Aggregated results of analysis](plots/results.png)
    
 Results file:
 ---------------

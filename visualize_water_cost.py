@@ -7,7 +7,7 @@ from scipy.stats import iqr
 
 
 monthly_aggregated = pd.read_csv('arima_aggregated_forecast.csv',sep=',')
-
+plt.rc('font', size=8)
 print(monthly_aggregated.info())
 
 plt.figure(figsize=(18, 12))

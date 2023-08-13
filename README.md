@@ -1,8 +1,8 @@
 
-Vesisahko Water & Heating Analysis
+ Water & Heating Analysis townhouse appartment complex
 ==================================
 
-This project provides an analysis of water and heating consumption for an apartment complex for the year 2023.
+This project provides an analysis of water and heating consumption for an townhouse appartement complex for the year 2023.
 
 Methodology:
 ------------

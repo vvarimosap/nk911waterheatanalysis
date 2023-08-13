@@ -1,0 +1,18 @@
+
+Hyperparameter Analysis for ARIMA Model:
+
+Dataset:
+The dataset contains water consumption data spanning from February 2, 2023, to August 12, 2023.
+
+ACF (AutoCorrelation Function) Analysis:
+The ACF plot shows the correlation of the series with itself, lagged by x time units. The first lag is significant, and the ACF tapers off slowly, suggesting that an MA(1) term might be appropriate.
+
+PACF (Partial AutoCorrelation Function) Analysis:
+The PACF plot shows the correlation of the series with its own lags, after removing the effect of intermediate lags. The significant lag at 1 suggests a potential AR(1) term.
+
+Hyperparameters:
+1. p (lag value where the PACF chart crosses the upper confidence interval for the first time) seems to be 1.
+2. d (degree of differencing) might be 0 or 1. This needs to be determined based on the stationarity of the data. If the data is already stationary, d would be 0; otherwise, d would be 1.
+3. q (lag value where the ACF chart crosses the upper confidence interval for the first time) seems to be 1.
+
+Based on these observations, a preliminary model to consider might be ARIMA(1,0,1) or ARIMA(1,1,1), depending on the stationarity of the data.

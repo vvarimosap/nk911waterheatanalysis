@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import iqr
 
 # Load dataset
-df = pd.read_csv('vesisahko_jun_aug.csv',sep=';')
+df = pd.read_csv('vesisahko_feb_aug.csv',sep=';')
 print(df.columns)
 df['Timestamp'] = df['Timestamp'].str.replace(',', '.')
 df['Date'] = pd.to_datetime(df['Timestamp'],format="%d.%m.%Y")
@@ -18,6 +18,9 @@ df.fillna(method='ffill', inplace=True)
 
 df.fillna(method='ffill', inplace=True)
 
+print (df)
+print (df.info())
+print (df.describe())
 # Remove outliers using IQR for both Water and Heat
 Q1_water = df['Water M3'].quantile(0.25)
 Q3_water = df['Water M3'].quantile(0.75)
@@ -31,9 +34,10 @@ IQR_heat = iqr(df['Heat MWH'])
 heat_outliers = (df['Heat MWH'] < (Q1_heat - 1.5 * IQR_heat)) | (df['Heat MWH'] > (Q3_heat + 1.5 * IQR_heat))
 df = df[~heat_outliers]
 
-# ARIMA forecasting for water consumption - 1,1,1 best
-water_model = ARIMA(df['Water M3'], order=(1,1,5))
+# ARIMA forecasting for water consumption - 1,1,1 best based on data
+water_model = ARIMA(df['Water M3'], order=(10,1,0))
 water_model_fit = water_model.fit()
+print(water_model_fit.summary())
 water_forecast = water_model_fit.forecast(steps=365)
 
 # ARIMA forecasting for heat consumption
@@ -54,14 +58,17 @@ water_price_per_m3 = 3.7696
 number_of_people = 30
 forecast_df['Warm Water M3'] = forecast_df['Predicted Water M3'] * static_percentage
 forecast_df['Daily Water Cost'] = forecast_df['Predicted Water M3'] * water_price_per_m3
-forecast_df['Warm Heating Water Cost per person'] = forecast_df['Warm Water M3'] * water_price_per_m3 / number_of_people
+forecast_df['Warm Heating Water MWH'] = forecast_df['Warm Water M3'] * 0.058
 forecast_df['Cold Water Cost per person'] = forecast_df['Predicted Water M3'] * water_price_per_m3 / number_of_people
-forecast_df['Total Water Cost per person'] = forecast_df['Warm Heating Water Cost per person'] + forecast_df['Cold Water Cost per person']
 
 # Adding heating cost based on given monthly rates
 heating_prices = {1: 80.6, 2: 80.6, 3: 71.92, 4: 57.04, 5: 42.16, 6: 33.48, 7: 33.48, 8: 33.48, 9: 40.92, 10: 59.52, 11: 69.44, 12: 78.12}
 forecast_df['Month'] = forecast_df['Date'].dt.month
 forecast_df['Daily Heating Cost'] = forecast_df['Month'].map(heating_prices) * forecast_df['Predicted Heat MWH']
+forecast_df['Daily Water Heating Cost'] = forecast_df['Month'].map(heating_prices) * forecast_df['Warm Heating Water MWH']
+forecast_df['Warm Heating Water Cost per person']=forecast_df['Daily Water Heating Cost']/number_of_people
+
+forecast_df['Total Water Cost per person'] = forecast_df['Warm Heating Water Cost per person'] + forecast_df['Cold Water Cost per person']
 
 # Aggregate the results on a monthly level
 monthly_aggregated = forecast_df.groupby(forecast_df['Date'].dt.month).agg({
@@ -74,6 +81,8 @@ monthly_aggregated = forecast_df.groupby(forecast_df['Date'].dt.month).agg({
     'Predicted Heat MWH': 'sum',
     'Daily Heating Cost': 'sum'
 }).reset_index().rename(columns={'Date': 'Month','Daily Heating Cost':'Monthly Heating Cost','Daily Water Cost':'Monthly Water Cost'})
+
+forecast_df.to_csv('arima_forecast.csv', index=False)
 
 # Save the final aggregated dataset
 monthly_aggregated.to_csv('arima_aggregated_forecast.csv', index=False)

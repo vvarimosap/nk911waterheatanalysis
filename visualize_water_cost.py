@@ -10,7 +10,7 @@ monthly_aggregated = pd.read_csv('arima_aggregated_forecast.csv',sep=',')
 
 print(monthly_aggregated.info())
 
-plt.figure(figsize=(18, 15))
+plt.figure(figsize=(18, 12))
 
 # Predicted Water M3
 plt.subplot(3, 2, 1)

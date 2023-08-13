@@ -27,8 +27,12 @@ Visualizations:
 4. [Aggregated results of analysis with water cost per person](plots/results.png)
    ![Aggregated results of analysis](plots/results.png)
    
-Results file:
+Files:
 ---------------
+
+Original dataset:
+
+[Measurements](vesisahko_feb_aug.csv)
 
 Following CSV contains results from model aggregated
 
@@ -36,7 +40,7 @@ Following CSV contains results from model aggregated
 
 Full year for each day extrapolated:
 
-[Raw results from model](arima_forecast.csv)
+[Raw results per day from model](arima_forecast.csv)
 
 Formulas and variables:
 ---------

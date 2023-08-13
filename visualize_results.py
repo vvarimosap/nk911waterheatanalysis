@@ -13,7 +13,7 @@ ax.axis('off')
 # Creating the table with white background and black font
 tbl = ax.table(cellText=df.values, colLabels=df.columns, cellLoc = 'center', loc='center', cellColours=[['white']*df.shape[1]]*df.shape[0])
 tbl.auto_set_font_size(False)
-tbl.set_fontsize(10)
+tbl.set_fontsize(8)
 tbl.auto_set_column_width(col=list(range(len(df.columns))))
 
 plt.show()

@@ -35,7 +35,7 @@ heat_outliers = (df['Heat MWH'] < (Q1_heat - 1.5 * IQR_heat)) | (df['Heat MWH'] 
 df = df[~heat_outliers]
 
 # ARIMA forecasting for water consumption - 1,1,1 best based on data
-water_model = ARIMA(df['Water M3'], order=(10,1,0))
+water_model = ARIMA(df['Water M3'], order=(100,0,5))
 water_model_fit = water_model.fit()
 print(water_model_fit.summary())
 water_forecast = water_model_fit.forecast(steps=365)

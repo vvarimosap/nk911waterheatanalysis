@@ -23,7 +23,7 @@ Visualizations:
    ![Predicted Water Usage (m³)](plots/predicted_water_use.png)
 3. [Predicted values water cost per person](plots/total_water_cost.png)
    ![Calculated values water cost per person](plots/total_water_cost.png)
-4. [Aggregated results of analysis with water cost per person](plots/results.png)
+4. [Aggregated results of analysis with water cost per person](plots/results1.png)
    ![Aggregated results of analysis](plots/results.png)
    
 Files:

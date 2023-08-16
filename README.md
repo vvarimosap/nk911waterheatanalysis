@@ -10,7 +10,7 @@ Methodology:
 2. Missing values were imputed using the forward-fill method.
 3. Outliers in the dataset were detected and removed using the IQR method. 
 4. An ARIMA (AutoRegressive Integrated Moving Average) model was applied to forecast water and heating consumption for the entire year. 
-Used Arima parameters (10,1,0). MA is 0 as assumed that errors have no significant dependence. AR 10 as we want to extrapolate past to future.
+~Used Arima parameters (10,1,0). MA is 0 as assumed that errors have no significant dependence. AR 10 as we want to extrapolate past to future.~
 5. Costs associated with water and heating consumption were calculated based on given monthly rates of local utilities company Fortum and assumption that heating 1 m3 water takes 0.058 MWH.
 6. The data was further enhanced with simulated warm water consumption and associated costs.
 7. Finally, the dataset was aggregated on a monthly level for easier interpretation and visualization.

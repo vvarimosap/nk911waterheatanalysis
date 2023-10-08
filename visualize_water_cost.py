@@ -58,5 +58,6 @@ plt.xticks(monthly_aggregated['Month'])
 plt.grid(axis='y')
 
 plt.tight_layout()
-plt.show()
+#plt.show()
 
+plt.savefig('plots/total_water_cost.png')

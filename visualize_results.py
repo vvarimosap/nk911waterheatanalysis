@@ -16,6 +16,8 @@ tbl.auto_set_font_size(False)
 tbl.set_fontsize(8)
 tbl.auto_set_column_width(col=list(range(len(df.columns))))
 
-plt.show()
+#plt.show()
 
+plt.savefig('plots/results.png')
+plt.savefig('plots/results1.png')
 

@@ -15,6 +15,7 @@ plt.ylabel('Water M3')
 plt.title('Water Consumption Over Time (Zoomed In)')
 plt.tight_layout()
 plt.grid(True)
-plt.show()
+#plt.show()
 
 
+plt.savefig('plots/water_consumption_raw.png')

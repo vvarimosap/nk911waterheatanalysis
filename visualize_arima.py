@@ -36,5 +36,7 @@ plt.ylabel('Water K3')
 plt.legend()
 plt.grid(True)
 plt.ylim([-25, 25])
-plt.show()
+#plt.show()
+
+plt.savefig('plots/predicted_water_use.png')
 
